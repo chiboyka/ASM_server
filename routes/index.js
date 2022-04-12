@@ -38,7 +38,11 @@ var carSchema = new mongoose.Schema({
 })
 // buoc 2 : lien ket Schema vs mongoDB qua mongoose
 var ASM = mongoose.model('asms', carSchema);
-
+router.get('/getall', function (req, res) {
+  ASM.find({}, function (err, data) {
+    res.send( data)
+  })
+})
 router.post('/btnxoa',function (req,res){
   var ida =req.body.idAnh
   console.log(ida)
